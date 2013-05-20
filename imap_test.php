@@ -1,6 +1,6 @@
 <?php
 
-    mysql_connect('localhost', 'root', 'mysqladmin')or die("error connect");
+    mysql_connect('172.31.0.17', 'root', 'mysqladmin')or die("error connect");
     mysql_select_db('test')or die("database error");
 
     	echo "<style type=text/css>";
