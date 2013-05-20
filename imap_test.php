@@ -39,7 +39,6 @@
 
     $imap = imap_open("{imperium.mail.pairserver.com:993/imap/ssl}INBOX", "prov@imperium.ph", "vorpimperium"); 
     $message_count = imap_num_msg($imap);
-//    $message_count = 5;
     print imap_last_error();
 
     for ($x=1; $x<=$message_count; ++$x){
