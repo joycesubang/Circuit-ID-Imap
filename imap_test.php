@@ -107,9 +107,13 @@
         {
             $svc_status = 'TEMPORARILY DISCONNECTED';
         }
-        else 
+        else if (($status != 'TERM') and ($status != 'DCNT') and ($status != NULL))
         {
             $svc_status = 'ACTIVATED';
+        }
+        else
+        {
+            $svc_status = NULL;
         }
 
 	mysql_query("INSERT INTO circuit_id (CircuitId, CustName, ActDate, AcNo, JobType, Status, SONum, AcMgr, ProjMgr, SvcDate, SvcType, SvcSpeed) VALUES 
