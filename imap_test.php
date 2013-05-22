@@ -1,6 +1,6 @@
 <?php
 
-    mysql_connect('172.31.0.17', 'root', 'mysqladmin')or die("error connect");
+    mysql_connect('localhost', 'root', 'mysqladmin')or die("error connect");
     mysql_select_db('test')or die("database error");
 
     	echo "<style type=text/css>";
@@ -35,7 +35,8 @@
 	  <td>Acceptance Date</td>
 	  <td>Service Speed</td>
 	  <td>Service Type</td>
-      <td>Status</td>
+          <td>Status</td>
+	  <td>Incident State</td>
 	</tr>";
 
     $imap = imap_open("{imperium.mail.pairserver.com:993/imap/ssl}INBOX", "prov@imperium.ph", "vorpimperium"); 
@@ -112,6 +113,8 @@
             $svc_status = 'ACTIVATED';
         }
 
+	$incident_state = 'Operational';
+
 	mysql_query("INSERT INTO circuit_id (CircuitId, CustName, ActDate, AcNo, JobType, Status, SONum, AcMgr, ProjMgr, SvcDate, SvcType, SvcSpeed) VALUES 
 	('$cid','$custname','$actdate','$acno','$status','$stat','$sonum','$acmgr','$projmgr','$svcdate','$svctype','$svcspeed')");
 
@@ -137,6 +140,7 @@
 		<td style=width:100px;text-align:left;>".$svcspeed."</td>
 		<td style=width:150px;text-align:left;>".$svctype."</td>
         <td style=width:100px;text-align:left;>".$svc_status."</td>
+	<td style=width:100px;text-align:left;>".$incident_state."</td>
 	</tr>";
 
 	$rowclass = 1 - $rowclass;
