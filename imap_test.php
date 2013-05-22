@@ -108,9 +108,13 @@
         {
             $svc_status = 'TEMPORARILY DISCONNECTED';
         }
-        else 
+        else if (($status != 'TERM') and ($status != 'DCNT') and ($status != NULL))
         {
             $svc_status = 'ACTIVATED';
+        }
+        else
+        {
+            $svc_status = NULL;
         }
 
 	$incident_state = 'Operational';
